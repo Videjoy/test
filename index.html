@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #f67280 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #fff8f0;
+            font-style: italic;
+        }
+
+        .hero-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: #d63447;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #d63447 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(214, 52, 71, 0.4);
+            font-family: 'Georgia', serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(214, 52, 71, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #d63447;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .countdown h3 {
+            color: #d63447;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: linear-gradient(135deg, #ff6b9d 0%, #d63447 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            min-width: 100px;
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery {
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery h3 {
+            color: #d63447;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #ffe0e9 0%, #ffccd5 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item h4 {
+            color: #d63447;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: white;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 100;
+            min-width: 280px;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .music-player h4 {
+            color: #d63447;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .play-pause-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #d63447 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(214, 52, 71, 0.4);
+        }
+
+        .play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(214, 52, 71, 0.6);
+        }
+
+        .song-info {
+            flex: 1;
+        }
+
+        .song-title {
+            color: #d63447;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .song-artist {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-icon {
+            color: #d63447;
+            font-size: 1.2rem;
+        }
+
+        .volume-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 5px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #ff6b9d 0%, #d63447 100%);
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #d63447;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #d63447;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff6b9d 0%, #d63447 100%);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .music-player {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                min-width: auto;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #d63447;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #ff6b9d;
+        }
+
+        .modal-content h2 {
+            color: #d63447;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .hero-section {
+                padding: 40px 25px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown {
+                padding: 30px 20px;
+            }
+
+            .time-unit {
+                padding: 15px 20px;
+                min-width: 80px;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsContainer"></div>
+
+    <div class="container">
+        <header>
+            <h1>💕 Happy Valentine's Day 💕</h1>
+            <p class="subtitle">Celebrate Love, Romance & Connection</p>
+        </header>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>Waktunya Merayakan Cinta</h2>
+                <p>
+                    Valentine adalah momen spesial untuk menunjukkan kasih sayang kepada orang-orang terkasih. 
+                    Buat hari ini tak terlupakan dengan kejutan romantis yang penuh makna.
+                </p>
+                <button class="cta-button" onclick="showMessage()">Kirim Pesan Cinta 💌</button>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🌹</div>
+                <h3>Hadiah Romantis</h3>
+                <p>Pilihan hadiah spesial yang dibuat dengan cinta untuk pasangan tersayang Anda.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💝</div>
+                <h3>Kejutan Istimewa</h3>
+                <p>Ide-ide kreatif untuk membuat momen Valentine yang tak terlupakan bersama.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💑</div>
+                <h3>Kenangan Abadi</h3>
+                <p>Ciptakan kenangan indah yang akan dikenang selamanya dalam hubungan Anda.</p>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <h3>💖 Ide Perayaan Valentine 💖</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="showIdea('dinner')">
+                    <div class="gallery-item-icon">🍽️</div>
+                    <h4>Romantic Dinner</h4>
+                    <p>Makan malam romantis untuk berdua</p>
+                </div>
+                <div class="gallery-item" onclick="showIdea('trip')">
+                    <div class="gallery-item-icon">✈️</div>
+                    <h4>Weekend Getaway</h4>
+                    <p>Liburan singkat yang berkesan</p>
+                </div>
+                <div class="gallery-item" onclick="showIdea('gift')">
+                    <div class="gallery-item-icon">🎁</div>
+                    <h4>Surprise Gift</h4>
+                    <p>Hadiah kejutan yang penuh makna</p>
+                </div>
+                <div class="gallery-item" onclick="showIdea('movie')">
+                    <div class="gallery-item-icon">🎬</div>
+                    <h4>Movie Night</h4>
+                    <p>Nonton film romantis bersama</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="countdown">
+            <h3>💖 Valentine's Day Countdown 💖</h3>
+            <div class="timer" id="countdown">
+                <div class="time-unit">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">Hari</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Jam</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Menit</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Detik</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💕 Made with Love • Valentine's Day 2026 💕</p>
+        </footer>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <h4>🎵 Romantic Music 🎵</h4>
+        <div class="music-controls">
+            <button class="play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">▶️</button>
+            <div class="song-info">
+                <div class="song-title" id="songTitle">Perfect</div>
+                <div class="song-artist" id="songArtist">Ed Sheeran</div>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+        <div class="volume-control">
+            <span class="volume-icon">🔊</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume()">
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a385b6b5b.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>💕 Pesan Cinta 💕</h2>
+            <p id="modalText">Terima kasih telah merayakan Valentine bersama kami! Sebarkan cinta dan kebahagiaan hari ini.</p>
+            <button class="cta-button" onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💕';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        // Create initial hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+
+        setInterval(createHeart, 500);
+
+        // Countdown timer to Valentine's Day 2027
+        function updateCountdown() {
+            const valentineDay = new Date('2027-02-14T00:00:00');
+            const now = new Date();
+            const diff = valentineDay - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = '<h2 style="color: #d63447;">💝 Happy Valentine\'s Day! 💝</h2>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Modal functions
+        function showMessage() {
+            const modal = document.getElementById('messageModal');
+            document.getElementById('modalText').textContent = '💕 Terima kasih telah merayakan Valentine bersama kami! Sebarkan cinta dan kebahagiaan hari ini. 💕';
+            modal.style.display = 'block';
+        }
+
+        function showIdea(type) {
+            const modal = document.getElementById('messageModal');
+            const messages = {
+                dinner: '🍽️ Ide Romantic Dinner: Siapkan makan malam spesial dengan lilin, musik romantis, dan menu favorit pasangan Anda. Jangan lupa tambahkan sentuhan personal!',
+                trip: '✈️ Ide Weekend Getaway: Rencanakan liburan singkat ke tempat yang romantis. Bisa ke pantai, pegunungan, atau kota yang belum pernah dikunjungi bersama.',
+                gift: '🎁 Ide Surprise Gift: Berikan hadiah yang bermakna seperti album foto kenangan, perhiasan, atau sesuatu yang mencerminkan hobi pasangan Anda.',
+                movie: '🎬 Ide Movie Night: Siapkan film romantis favorit, popcorn, selimut hangat, dan nikmati malam berdua dengan nyaman di rumah.'
+            };
+            document.getElementById('modalText').textContent = messages[type];
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('messageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Music Player Functions
+        const bgMusic = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeDisplay = document.getElementById('currentTime');
+        const durationDisplay = document.getElementById('duration');
+
+        let isPlaying = false;
+
+        // Set initial volume
+        bgMusic.volume = 0.5;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                playPauseBtn.textContent = '▶️';
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                playPauseBtn.textContent = '⏸️';
+                isPlaying = true;
+            }
+        }
+
+        function changeVolume() {
+            bgMusic.volume = volumeSlider.value / 100;
+        }
+
+        // Update progress bar
+        bgMusic.addEventListener('timeupdate', function() {
+            if (bgMusic.duration) {
+                const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
+                progressFill.style.width = progress + '%';
+                
+                // Update time display
+                currentTimeDisplay.textContent = formatTime(bgMusic.currentTime);
+                durationDisplay.textContent = formatTime(bgMusic.duration);
+            }
+        });
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // Auto-play on page load (some browsers may block this)
+        window.addEventListener('load', function() {
+            // Try to autoplay, but handle if blocked by browser
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                playPauseBtn.textContent = '⏸️';
+            }).catch((error) => {
+                // Autoplay was prevented, user needs to click play
+                console.log('Autoplay prevented:', error);
+            });
+        });
+    </script>
+</body>
+</html>
